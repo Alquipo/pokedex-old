@@ -12,7 +12,6 @@ const PokemonList = () => {
     const fetchPokemons = async () => {
       const response = await api.get(`/pokemon`);
 
-      console.log(response.data.results);
       setPokemons(response.data.results);
       setIsLoading(false);
     };

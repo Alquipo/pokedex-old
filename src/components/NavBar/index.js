@@ -7,7 +7,7 @@ const NavBar = () => {
     <div>
       <NavBarStyles className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a className="navbar-brand" href="/">
-          Pokedex
+          Escolha Seu Pokemon
         </a>
       </NavBarStyles>
     </div>
