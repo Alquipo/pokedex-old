@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
+import Spinner from "../Spinner";
+
 import PokemonCard from "../PokemonCard";
 
 const PokemonList = () => {
@@ -18,14 +20,12 @@ const PokemonList = () => {
     fetchPokemons();
   }, []);
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="row">
       {pokemons.map((pokemon) => (
-        <PokemonCard
-          key={pokemon.name}
-          pokemon={pokemon}
-          isLoading={isLoading}
-        />
+        <PokemonCard key={pokemon.name} pokemon={pokemon} />
       ))}
     </div>
   );

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const PokemonCard = ({ pokemon, isLoading }) => {
+import { Sprite } from "./styles";
+
+const PokemonCard = ({ pokemon }) => {
   const [imagePokemon, setImagePokemon] = useState("");
   const [pokemonIndex, setPokemonIndex] = useState("");
 
@@ -17,6 +19,10 @@ const PokemonCard = ({ pokemon, isLoading }) => {
     <div className="col-md-3 col-sm-6 mb-5">
       <div className="card">
         <h5 className="card-header">{pokemonIndex}</h5>
+        <Sprite
+          className="card-img-top rounded mx-auto mt-2"
+          src={imagePokemon}
+        ></Sprite>
         <div className="card-body mx-auto">
           <h6 className="card-title ">
             {pokemon.name
@@ -27,8 +33,6 @@ const PokemonCard = ({ pokemon, isLoading }) => {
               )
               .join(" ")}
           </h6>
-
-          <img src={imagePokemon} alt="" />
         </div>
       </div>
     </div>
