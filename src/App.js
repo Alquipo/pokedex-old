@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Pokedex from "./pages/Pokedex";
 import Home from "./pages/Home";
-import Pokemon from "./components/Pokemon";
+import Pokemon from "./pages/Pokemon";
 
 function App() {
   return (
