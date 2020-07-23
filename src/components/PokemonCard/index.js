@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
 
-import { Sprite, Card } from "./styles";
+import { Sprite, Card, StyledLink } from "./styles";
 
 const PokemonCard = ({ pokemon }) => {
   const [imagePokemon, setImagePokemon] = useState("");
@@ -17,26 +18,29 @@ const PokemonCard = ({ pokemon }) => {
 
   return (
     <div className="col-md-3 col-sm-6 mb-5">
-      <Card className="card">
-        <h5 className="card-header">{pokemonIndex}</h5>
+      <StyledLink to={`pokemon/${pokemonIndex}`}>
+        <Card className="card">
+          <h5 className="card-header">{pokemonIndex}</h5>
 
-        <Sprite
-          className="card-img-top rounded mx-auto mt-2"
-          src={imagePokemon}
-        ></Sprite>
+          <Sprite
+            className="card-img-top rounded mx-auto mt-2"
+            src={imagePokemon}
+          ></Sprite>
 
-        <div className="card-body mx-auto">
-          <h6 className="card-title ">
-            {pokemon.name
-              .toLowerCase()
-              .split(" ")
-              .map(
-                (letter) => letter.charAt(0).toUpperCase() + letter.substring(1)
-              )
-              .join(" ")}
-          </h6>
-        </div>
-      </Card>
+          <div className="card-body mx-auto">
+            <h6 className="card-title ">
+              {pokemon.name
+                .toLowerCase()
+                .split(" ")
+                .map(
+                  (letter) =>
+                    letter.charAt(0).toUpperCase() + letter.substring(1)
+                )
+                .join(" ")}
+            </h6>
+          </div>
+        </Card>
+      </StyledLink>
     </div>
   );
 };
