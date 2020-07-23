@@ -4,6 +4,29 @@ import api from "../../services/api";
 
 import Spinner from "../Spinner";
 
+import "./styles.css";
+
+// const TYPE_COLORS = {
+//   bug: "B1C12E",
+//   dark: "4F3A2D",
+//   dragon: "755EDF",
+//   electric: "FCBC17",
+//   fairy: "F4B1F4",
+//   fighting: "823551D",
+//   fire: "E73B0C",
+//   flying: "A3B3F7",
+//   ghost: "6060B2",
+//   grass: "74C236",
+//   ground: "D3B357",
+//   ice: "A3E7FD",
+//   normal: "C8C4BC",
+//   poison: "934594",
+//   psychic: "ED4882",
+//   rock: "B9A156",
+//   steel: "B5B5C3",
+//   water: "3295F6",
+// };
+
 const Pokemon = () => {
   const [pokemon, setPokemom] = useState([]);
   const [pokemonSpecies, setPokemonSpecies] = useState([]);
@@ -30,11 +53,15 @@ const Pokemon = () => {
             (typeInfo) =>
               typeInfo.type.name[0].toUpperCase() + typeInfo.type.name.slice(1)
           ),
-          abilities: abilities.map(
-            (abilitiesInfo) =>
-              abilitiesInfo.ability.name[0].toUpperCase() +
-              abilitiesInfo.ability.name.slice(1)
-          ),
+          abilities: abilities
+            .map((ability) =>
+              ability.ability.name
+                .toLowerCase()
+                .split("-")
+                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                .join(" ")
+            )
+            .join(", "),
           id: id,
           weight: weight / 10,
           height: height / 10,
@@ -49,14 +76,14 @@ const Pokemon = () => {
             stats[4].base_stat,
             stats[5].base_stat,
           ],
-          baseStatsName: [
-            stats[0].stat.name,
-            stats[1].stat.name,
-            stats[2].stat.name,
-            stats[3].stat.name,
-            stats[4].stat.name,
-            stats[5].stat.name,
-          ],
+          // baseStatsName: [
+          //   stats[0].stat.name,
+          //   stats[1].stat.name,
+          //   stats[2].stat.name,
+          //   stats[3].stat.name,
+          //   stats[4].stat.name,
+          //   stats[5].stat.name,
+          // ],
           evs: stats
             .filter((stat) => {
               if (stat.effort > 0) {
@@ -113,8 +140,14 @@ const Pokemon = () => {
     loadPokemonData();
   }, [params.pokemonIndex]);
 
-  console.log(pokemon);
-  console.log(pokemonSpecies);
+  const baseStatsName = [
+    "HP",
+    "Attack",
+    "Defense",
+    "Sp. Attack",
+    "Sp. Defense",
+    "Speed",
+  ];
 
   return isLoading ? (
     <Spinner />
@@ -129,13 +162,154 @@ const Pokemon = () => {
             <div className="col-7">
               <div className="float-right">
                 {pokemon.types.map((type) => (
-                  <span key={type} className="badge badge-pill nr-1">
+                  <span key={type} className={`badge badge-pill mr-1 ${type}`}>
                     {type}
                   </span>
                 ))}
               </div>
             </div>
           </div>
+        </div>
+        <div className="card-body">
+          <div className="row align-items-center">
+            <div className="col-md-3">
+              <img
+                src={pokemon.spriteImageUrl}
+                alt="Pokemon"
+                className="card-img-top rounded mx-auto mt-2"
+              />
+            </div>
+            <div className="col-md-9">
+              <h4 className="mx-auto">{pokemon.name}</h4>
+              {pokemon.baseStats.map((stat, indice) => (
+                <div key={indice} className="row align-items-center">
+                  <div className="col-12 col-md-3">{baseStatsName[indice]}</div>
+
+                  <div className="col-12 col-md-9">
+                    <div className="progress">
+                      <div
+                        className="progress-bar"
+                        style={{ width: `${stat}%` }}
+                        aria-valuenow="25"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      >
+                        <small>{stat}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="row mt-1">
+              <div className="col">
+                <p className="p-2">
+                  {pokemonSpecies.description[0].flavor_text}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div className="card-body">
+          <h5 className="card-litle text-center">Profile</h5>
+          <div className="row">
+            <div className="col-md-6">
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="float-right">Height: </div>
+                </div>
+                <div className="col-md-6">
+                  <h6 className="float-left">{pokemon.height} Mt</h6>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="float-right">Weight: </div>
+                </div>
+                <div className="col-md-6">
+                  <h6 className="float-left">{pokemon.weight} Kg</h6>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="float-right">Catch Hate: </div>
+                </div>
+                <div className="col-md-6">
+                  <h6 className="float-left">{pokemonSpecies.catchRate} </h6>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="float-right">Gender Ratio: </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="progress">
+                    <div
+                      className="progress-bar"
+                      role="progressbar"
+                      style={{
+                        width: `${pokemonSpecies.genderRatioFemale}%`,
+                        backgroundColor: "#C21858",
+                      }}
+                      aria-valuenow="15"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <small>{pokemonSpecies.genderRatioFemale}</small>
+                    </div>
+                    <div
+                      className="progress-bar"
+                      role="progerssbar"
+                      style={{
+                        width: `${pokemonSpecies.genderRatioMale}%`,
+                        backgroundColor: "#1976D2",
+                      }}
+                      aria-valuenow="30"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <small>{pokemonSpecies.genderRatioMale}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="row">
+                <div className="col-6">
+                  <h6 className="float-right">Egg Groups:</h6>
+                </div>
+                <div className="col-6">
+                  <h6 className="float-left">{pokemonSpecies.eggGroups} </h6>
+                </div>
+                <div className="col-6">
+                  <h6 className="float-right">Hatch Steps:</h6>
+                </div>
+                <div className="col-6">
+                  <h6 className="float-left">{pokemonSpecies.hatchSteps}</h6>
+                </div>
+                <div className="col-6">
+                  <h6 className="float-right">Abilities:</h6>
+                </div>
+                <div className="col-6">
+                  <h6 className="float-left">{pokemon.abilities}</h6>
+                </div>
+                <div className="col-6">
+                  <h6 className="float-right">EVs:</h6>
+                </div>
+                <div className="col-6">
+                  <h6 className="float-left">{pokemon.evs}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          Data From{" "}
+          <a href="https://pokeapi.co/" target="_blank" className="card-link">
+            PokeAPI.co
+          </a>
         </div>
       </div>
     </div>
