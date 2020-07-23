@@ -1,20 +1,20 @@
 import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import "./App.css";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import NavBar from "./components/NavBar";
-import Dashboard from "./components/Dashboard";
+import Pokedex from "./pages/Pokedex";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <div className="container">
-        <Dashboard />
+    <BrowserRouter>
+      <div>
+        <Route path="/" exact component={Home} />
+        <Route path="/pokedex" exact component={Pokedex} />
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
