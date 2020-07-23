@@ -236,7 +236,7 @@ const Pokemon = () => {
                   <div className="float-right">Catch Hate: </div>
                 </div>
                 <div className="col-md-6">
-                  <h6 className="float-left">{pokemonSpecies.catchRate} </h6>
+                  <h6 className="float-left">{pokemonSpecies.catchRate}%</h6>
                 </div>
               </div>
               <div className="row">
