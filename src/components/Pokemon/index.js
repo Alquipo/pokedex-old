@@ -6,27 +6,6 @@ import Spinner from "../Spinner";
 
 import "./styles.css";
 
-// const TYPE_COLORS = {
-//   bug: "B1C12E",
-//   dark: "4F3A2D",
-//   dragon: "755EDF",
-//   electric: "FCBC17",
-//   fairy: "F4B1F4",
-//   fighting: "823551D",
-//   fire: "E73B0C",
-//   flying: "A3B3F7",
-//   ghost: "6060B2",
-//   grass: "74C236",
-//   ground: "D3B357",
-//   ice: "A3E7FD",
-//   normal: "C8C4BC",
-//   poison: "934594",
-//   psychic: "ED4882",
-//   rock: "B9A156",
-//   steel: "B5B5C3",
-//   water: "3295F6",
-// };
-
 const Pokemon = () => {
   const [pokemon, setPokemom] = useState([]);
   const [pokemonSpecies, setPokemonSpecies] = useState([]);
@@ -76,14 +55,7 @@ const Pokemon = () => {
             stats[4].base_stat,
             stats[5].base_stat,
           ],
-          // baseStatsName: [
-          //   stats[0].stat.name,
-          //   stats[1].stat.name,
-          //   stats[2].stat.name,
-          //   stats[3].stat.name,
-          //   stats[4].stat.name,
-          //   stats[5].stat.name,
-          // ],
+
           evs: stats
             .filter((stat) => {
               if (stat.effort > 0) {
@@ -260,7 +232,7 @@ const Pokemon = () => {
                     </div>
                     <div
                       className="progress-bar"
-                      role="progerssbar"
+                      role="progressbar"
                       style={{
                         width: `${pokemonSpecies.genderRatioMale}%`,
                         backgroundColor: "#1976D2",
@@ -307,7 +279,12 @@ const Pokemon = () => {
         </div>
         <div class="card-footer text-muted">
           Data From{" "}
-          <a href="https://pokeapi.co/" target="_blank" className="card-link">
+          <a
+            href="https://pokeapi.co/"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="card-link"
+          >
             PokeAPI.co
           </a>
         </div>
