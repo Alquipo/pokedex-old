@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 import Spinner from "../Spinner";
 import { Pagination } from "semantic-ui-react";
-
 import PokemonCard from "../PokemonCard";
 
 import "./styles.css";
@@ -10,33 +9,28 @@ import "./styles.css";
 const PokemonList = () => {
   const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [pokemonPagination, setPokemonPagination] = useState({
-    currentPage: 0,
-    offset: 0,
-  });
+  const [totalPokemon] = useState(807);
+  const [pokemonPerPage, setPokemonPerPage] = useState(20);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     const fetchPokemons = async () => {
-      const response = await api.get(
-        `/pokemon?limit=25&offset=${pokemonPagination.currentPage * (25 / 2)}`
-      );
+      await api
+        .get(`/pokemon?limit=${pokemonPerPage}&offset=${currentPage}`)
+        .then((response) => {
+          setPokemons(response.data.results);
+        });
 
-      setPokemons(response.data.results);
       setIsLoading(false);
     };
-
     fetchPokemons();
-  }, [pokemonPagination.currentPage]);
+  }, [currentPage, pokemonPerPage]);
 
-  const onPaginationClick = (_, data) => {
-    if (data.activePage === 1) {
-      setPokemonPagination({ currentPage: 0 });
-    } else {
-      setPokemonPagination({ currentPage: data.activePage });
-    }
+  const onPaginationClick = (e, pageInfo) => {
+    setCurrentPage(pageInfo.activePage * pokemonPerPage - pokemonPerPage);
   };
 
-  console.log(pokemonPagination);
+  const totalPage = Math.ceil(totalPokemon / pokemonPerPage);
 
   return isLoading ? (
     <Spinner />
@@ -45,12 +39,12 @@ const PokemonList = () => {
       <div className="pagination-container">
         <Pagination
           defaultActivePage={1}
-          totalPages={32}
+          totalPages={totalPage}
           onPageChange={onPaginationClick}
         />
       </div>
 
-      <div className="row">
+      <div className="row mt-4">
         {pokemons.map((pokemon) => (
           <PokemonCard key={pokemon.name} pokemon={pokemon} />
         ))}
