@@ -85,11 +85,10 @@ const Pokemon = () => {
             hatch_counter,
           } = response.data;
           setPokemonSpecies({
-            description: flavor_text_entries.filter((flavor) => {
-              if (flavor.language.name === "en") {
-                return `${flavor.flavor_text}`;
-              }
-            }),
+            description: flavor_text_entries
+              .filter((flavor) => flavor.language.name === "en")
+              .map((flavor) => `${flavor.flavor_text}`),
+
             genderRatioFemale: gender_rate * 12.5,
             genderRatioMale: 12.5 * (8 - gender_rate),
             catchRate: Math.round((100 / 255) * capture_rate),
