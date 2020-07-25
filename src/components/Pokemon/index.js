@@ -87,7 +87,7 @@ const Pokemon = () => {
           setPokemonSpecies({
             description: flavor_text_entries
               .filter((flavor) => flavor.language.name === "en")
-              .map((flavor) => `${flavor.flavor_text}`),
+              .map((flavor) => flavor.flavor_text),
 
             genderRatioFemale: gender_rate * 12.5,
             genderRatioMale: 12.5 * (8 - gender_rate),
@@ -118,7 +118,7 @@ const Pokemon = () => {
     "Sp. Defense",
     "Speed",
   ];
-
+  console.log(pokemonSpecies.description);
   return isLoading ? (
     <Spinner />
   ) : (
@@ -174,9 +174,7 @@ const Pokemon = () => {
             </div>
             <div className="row mt-1">
               <div className="col">
-                <p className="p-2">
-                  {pokemonSpecies.description[0].flavor_text}
-                </p>
+                <p className="p-2">{pokemonSpecies.description[6]}</p>
               </div>
             </div>
           </div>
@@ -276,7 +274,7 @@ const Pokemon = () => {
             </div>
           </div>
         </div>
-        <div class="card-footer text-muted">
+        <div className="card-footer text-muted">
           Data From{" "}
           <a
             href="https://pokeapi.co/"
