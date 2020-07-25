@@ -1,14 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import { NavBarStyles } from "./styles";
+import { NavBarStyles, BackContainer, TitleContainer } from "./styles";
 
 const NavBar = () => {
   return (
     <div>
-      <NavBarStyles className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a className="navbar-brand" href="/">
-          Escolha Seu Pokemon
-        </a>
+      <NavBarStyles className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <BackContainer>
+          <Link to="/">
+            <h2>
+              <i className="arrow circle left icon" />
+              Voltar para home
+            </h2>
+          </Link>
+        </BackContainer>
+        <TitleContainer className="title-container">
+          <h1>Escolha seu Pokemon</h1>
+        </TitleContainer>
       </NavBarStyles>
     </div>
   );

@@ -44,7 +44,6 @@ const Pokemon = () => {
           id: id,
           weight: weight / 10,
           height: height / 10,
-          // imageUrl: getPokemonImageUrl(id),
           spriteImageUrl: sprites.front_default,
           shinySpriteImageUrl: sprites.front_shiny,
           baseStats: [
@@ -85,7 +84,6 @@ const Pokemon = () => {
             hatch_counter,
           } = response.data;
           setPokemonSpecies({
-            // eslint-disable-next-line array-callback-return
             description: flavor_text_entries.filter((flavor) => {
               if (flavor.language.name === "en") {
                 return `${flavor.flavor_text}`;
@@ -125,12 +123,9 @@ const Pokemon = () => {
     <Spinner />
   ) : (
     <div className="col">
-      <div className="card">
+      <div className="card mt-5">
         <div className="card-header">
           <div className="row">
-            <div className="col-5">
-              <h5>{pokemon.id}</h5>
-            </div>
             <div className="col-7">
               <div className="float-right">
                 {pokemon.types.map((type) => (
@@ -153,9 +148,9 @@ const Pokemon = () => {
             </div>
             <div className="col-md-9">
               <h4 className="mx-auto">{pokemon.name}</h4>
-              {pokemon.baseStats.map((stat, indice) => (
-                <div key={indice} className="row align-items-center">
-                  <div className="col-12 col-md-3">{baseStatsName[indice]}</div>
+              {pokemon.baseStats.map((stat, index) => (
+                <div key={index} className="row align-items-center">
+                  <div className="col-12 col-md-3">{baseStatsName[index]}</div>
 
                   <div className="col-12 col-md-9">
                     <div className="progress">
@@ -184,7 +179,7 @@ const Pokemon = () => {
         </div>
         <hr />
         <div className="card-body">
-          <h5 className="card-litle text-center">Profile</h5>
+          <h5 className="card-little text-center">Profile</h5>
           <div className="row">
             <div className="col-md-6">
               <div className="row">
