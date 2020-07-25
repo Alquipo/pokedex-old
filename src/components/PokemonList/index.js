@@ -10,7 +10,7 @@ const PokemonList = () => {
   const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [totalPokemon] = useState(807);
-  const [pokemonPerPage, setPokemonPerPage] = useState(20);
+  const [pokemonPerPage] = useState(20);
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
