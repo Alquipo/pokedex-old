@@ -85,7 +85,6 @@ const Pokemon = () => {
             hatch_counter,
           } = response.data;
           setPokemonSpecies({
-            // eslint-disable-next-line array-callback-return
             description: flavor_text_entries.filter((flavor) => {
               if (flavor.language.name === "en") {
                 return `${flavor.flavor_text}`;
