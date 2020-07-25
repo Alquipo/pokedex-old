@@ -20,6 +20,9 @@ export const Card = styled.div`
   -webkit-user-select: none;
   user-select: none;
   -o-user-select: none;
+
+  background-color: #34343c;
+  color: #fff;
 `;
 
 export const StyledLink = styled(Link)`

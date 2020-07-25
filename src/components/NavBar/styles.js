@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavBarStyles = styled.nav`
-  background-color: #dcdcdc !important;
+  background-color: #34343c !important;
 `;
 
 export const BackContainer = styled.nav`
@@ -13,11 +13,15 @@ export const BackContainer = styled.nav`
     font-size: 26px;
     line-height: 55px;
 
-    color: #ef5350;
+    color: #fff;
   }
 `;
 
 export const TitleContainer = styled.nav`
   width: 60%;
   text-align: center;
+
+  h1 {
+    color: #fff;
+  }
 `;

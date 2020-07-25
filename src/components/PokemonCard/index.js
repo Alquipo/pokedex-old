@@ -9,7 +9,6 @@ import { Sprite, Card, StyledLink } from "./styles";
 const PokemonCard = ({ pokemon }) => {
   const [imagePokemon, setImagePokemon] = useState("");
   const [pokemonId, setPokemonId] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadIdPokemon = async () => {
@@ -21,12 +20,9 @@ const PokemonCard = ({ pokemon }) => {
     loadIdPokemon();
 
     setImagePokemon(getPokemonImageUrl(pokemonId));
-    setIsLoading(false);
   }, [pokemon.url, pokemonId]);
 
-  if (isLoading) {
-    return <Spinner />;
-  } else if (pokemonId > 807) {
+  if (pokemonId > 807) {
     return <div></div>;
   } else {
     return (

@@ -20,7 +20,6 @@ const PokemonList = () => {
         .then((response) => {
           setPokemons(response.data.results);
         });
-
       setIsLoading(false);
     };
     fetchPokemons();
@@ -41,6 +40,7 @@ const PokemonList = () => {
           defaultActivePage={1}
           totalPages={totalPage}
           onPageChange={onPaginationClick}
+          style={{ backgroundColor: "#34343c", color: "#FFF" }}
         />
       </div>
 
