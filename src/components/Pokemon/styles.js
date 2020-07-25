@@ -103,3 +103,18 @@ export const Badge = styled.span`
     color: #fff;
   }
 `;
+
+export const ProgressDiv = styled.div`
+  &.progress-bar {
+    /* background-color: white; */
+    width: 0;
+    height: 20px;
+    font-size: 1rem;
+    text-align: right;
+    transition: width 1s ease-in;
+  }
+
+  &.progress-bar span {
+    padding-right: 4px;
+  }
+`;

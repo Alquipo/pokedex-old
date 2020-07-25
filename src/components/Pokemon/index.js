@@ -3,7 +3,7 @@ import { useRouteMatch } from "react-router-dom";
 import api from "../../services/api";
 
 import { Spinner } from "../Spinner";
-import { Badge } from "./styles";
+import { Badge, ProgressDiv } from "./styles";
 
 // import "./styles.css";
 
@@ -151,19 +151,23 @@ const Pokemon = () => {
               <h4 className="mx-auto">{pokemon.name}</h4>
               {pokemon.baseStats.map((stat, index) => (
                 <div key={index} className="row align-items-center">
-                  <div className="col-12 col-md-3">{baseStatsName[index]}</div>
+                  <div className="col-12 col-md-3">
+                    <strong>{baseStatsName[index]}</strong>
+                  </div>
 
-                  <div className="col-12 col-md-9">
-                    <div className="progress">
-                      <div
-                        className="progress-bar"
+                  <div className="col-12 col-md-9 ">
+                    <div className="progress" style={{ height: "20px" }}>
+                      <ProgressDiv
+                        className="progress-bar progress-bar-striped progress-bar-animated rounded-sm "
                         style={{ width: `${stat}%` }}
-                        aria-valuenow="25"
+                        aria-valuenow=""
                         aria-valuemin="0"
-                        aria-valuemax="100"
+                        aria-valuemax="255"
                       >
-                        <small>{stat}</small>
-                      </div>
+                        <span className="text-right font-weight-bold">
+                          {stat}
+                        </span>
+                      </ProgressDiv>
                     </div>
                   </div>
                 </div>

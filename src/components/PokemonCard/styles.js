@@ -14,22 +14,21 @@ export const Card = styled.div`
   overflow: hidden;
   cursor: pointer;
 
-  transition: 0.4s ease-in-out all;
-  -webkit-transition: 0.4s ease-out;
-  -moz-transition: 0.4s ease-out;
-  -o-transition: 0.4s ease-out;
+  transition: 0.7s ease-in-out all;
+  -webkit-transition: 0.7s ease-out;
+  -moz-transition: 0.7s ease-out;
+  -o-transition: 0.7s ease-out;
 
   &:hover {
     transform: scale(1.05);
     color: #fff;
-    /* box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5); */
     overflow: hidden;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
-    -webkit-transition: color 800ms;
-    transition: color 800ms;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
   }
@@ -48,8 +47,8 @@ export const Card = styled.div`
     transform: scale(2);
     -webkit-transition-property: transform;
     transition-property: transform;
-    -webkit-transition: 800ms ease-out;
-    transition: 800ms ease-out;
+    -webkit-transition: 0.7s ease-out;
+    transition: 0.7s ease-out;
   }
   &:hover:before {
     -webkit-transform: scale(0);
@@ -174,6 +173,13 @@ export const Card = styled.div`
       background-color: #7038f8;
     }
   }
+
+  &.Fairy {
+    border-color: #fa58f4;
+    &:hover {
+      background-color: #f781d8;
+    }
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -264,6 +270,10 @@ export const CardId = styled.span`
 
   &.Dragon {
     background-color: #7038f8;
+  }
+
+  &.Fairy {
+    background-color: #f781d8;
   }
 `;
 

@@ -16,14 +16,14 @@ import {
 const PokemonCard = ({ pokemon }) => {
   const [imagePokemon, setImagePokemon] = useState("");
   const [pokemonId, setPokemonId] = useState("");
-  const [pokemonType, setPokemonType] = useState([]);
+  const [pokemonTypes, setPokemonTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadIdPokemon = async () => {
       await axios.get(pokemon.url).then((response) => {
         setPokemonId(response.data.id);
-        setPokemonType(response.data.types);
+        setPokemonTypes(response.data.types);
       });
     };
 
@@ -40,20 +40,11 @@ const PokemonCard = ({ pokemon }) => {
     .map((letter) => letter.charAt(0).toUpperCase() + letter.substring(1))
     .join(" ");
 
-  // const pokemonTypeMap = pokemonType
-  //   .map((poke) =>
-  //     poke.type.name
-  //       .toLowerCase()
-  //       .split(" ")
-  //       .map((letter) => letter.charAt(0).toUpperCase() + letter.substring(1))
-  //   )
-  //   .join(" / ");
-
-  const pokemonTypeMap = pokemonType.map(
+  const pokemonType = pokemonTypes.map(
     (type) => type.type.name[0].toUpperCase() + type.type.name.slice(1)
   );
 
-  console.log(pokemonTypeMap);
+  console.log(pokemonType);
 
   if (isLoading) {
     return <Pokeball />;
@@ -62,11 +53,11 @@ const PokemonCard = ({ pokemon }) => {
   } else {
     return (
       <StyledLink to={`pokemon/${pokemonId}`}>
-        <Card className={pokemonTypeMap[0]}>
-          <CardId className={pokemonTypeMap[0]}># {pokemonId}</CardId>
+        <Card className={pokemonType[0]}>
+          <CardId className={pokemonType[0]}># {pokemonId}</CardId>
           <CardImg src={imagePokemon} alt={nameCapitalized} />
           <CardName>{nameCapitalized}</CardName>
-          <CardDetails>{pokemonTypeMap.join(" / ")}</CardDetails>
+          <CardDetails>{pokemonType.join(" / ")}</CardDetails>
         </Card>
       </StyledLink>
     );

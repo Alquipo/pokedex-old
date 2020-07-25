@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 export const NavBarStyles = styled.nav`
-  background-color: #444 !important;
+  background-color: #fff !important;
 `;
 
 export const BackContainer = styled.nav`
   margin-left: 100px;
+
+  a {
+    text-decoration: none;
+  }
 
   h2 {
     font-style: normal;
@@ -13,7 +17,11 @@ export const BackContainer = styled.nav`
     font-size: 26px;
     line-height: 55px;
 
-    color: #fff;
+    color: gray;
+
+    &:hover {
+      color: black;
+    }
   }
 `;
 
@@ -22,6 +30,11 @@ export const TitleContainer = styled.nav`
   text-align: center;
 
   h1 {
-    color: #fff;
+    color: gray;
+    /* cursor: pointer; */
+
+    &:hover {
+      color: black;
+    }
   }
 `;
