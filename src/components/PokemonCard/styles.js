@@ -14,10 +14,10 @@ export const Card = styled.div`
   overflow: hidden;
   cursor: pointer;
 
-  transition: 0.7s ease-in-out all;
-  -webkit-transition: 0.7s ease-out;
-  -moz-transition: 0.7s ease-out;
-  -o-transition: 0.7s ease-out;
+  transition: 0.6s ease-in-out all;
+  -webkit-transition: 0.6s ease-out;
+  -moz-transition: 0.6s ease-out;
+  -o-transition: 0.6s ease-out;
 
   &:hover {
     transform: scale(1.05);
@@ -47,8 +47,8 @@ export const Card = styled.div`
     transform: scale(2);
     -webkit-transition-property: transform;
     transition-property: transform;
-    -webkit-transition: 0.7s ease-out;
-    transition: 0.7s ease-out;
+    -webkit-transition: 0.6s ease-out;
+    transition: 0.6s ease-out;
   }
   &:hover:before {
     -webkit-transform: scale(0);
