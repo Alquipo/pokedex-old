@@ -40,7 +40,6 @@ const PokemonList = () => {
           defaultActivePage={1}
           totalPages={totalPage}
           onPageChange={onPaginationClick}
-          style={{ backgroundColor: "#444", color: "#FFF" }}
         />
       </div>
 
