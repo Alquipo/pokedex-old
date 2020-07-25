@@ -1,7 +1,7 @@
 import React from "react";
 import spinner from "../../assets/pokeball.gif";
 
-const Spinner = () => {
+export const Spinner = () => {
   return (
     <img
       src={spinner}
@@ -15,4 +15,16 @@ const Spinner = () => {
   );
 };
 
-export default Spinner;
+export const Pokeball = () => {
+  return (
+    <img
+      src={spinner}
+      alt="Loading"
+      style={{
+        width: "12rem",
+        margin: "auto",
+        display: "block",
+      }}
+    />
+  );
+};

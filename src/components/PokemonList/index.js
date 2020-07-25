@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
-import Spinner from "../Spinner";
+import { Spinner } from "../Spinner";
 import { Pagination } from "semantic-ui-react";
 import PokemonCard from "../PokemonCard";
 
@@ -44,7 +44,7 @@ const PokemonList = () => {
         />
       </div>
 
-      <div className="row mt-4">
+      <div id="app">
         {pokemons.map((pokemon) => (
           <PokemonCard key={pokemon.name} pokemon={pokemon} />
         ))}

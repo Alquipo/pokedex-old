@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import api from "../../services/api";
 
-import Spinner from "../Spinner";
+import { Spinner } from "../Spinner";
 
 import "./styles.css";
 

@@ -1,28 +1,24 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Sprite = styled.img`
-  width: 5em;
-  height: 5em;
-`;
-
 export const Card = styled.div`
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 12rem auto;
+  background: #444;
+  color: #e4c439;
+  padding: 1rem;
+  border-radius: 10px;
+  border-top: 0.5px solid #cebf7b;
+  border-bottom: 0.5px solid #cebf7b;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s ease-in-out all;
 
   &:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transform: scale(1.05);
   }
-
-  -webkit-font-smoothing: antialiased;
-
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  -o-user-select: none;
-
-  background-color: #34343c;
-  color: #fff;
 `;
 
 export const StyledLink = styled(Link)`
@@ -35,4 +31,34 @@ export const StyledLink = styled(Link)`
   &:active {
     text-decoration: none;
   }
+`;
+
+export const CardId = styled.span`
+  background: #cebf7b;
+  width: 3rem;
+  color: #333;
+  padding: 0.1rem;
+  font-weight: 700;
+  position: absolute;
+  border-radius: 0 0 10px 0;
+  top: 0;
+  left: 0;
+`;
+
+export const CardName = styled.h1`
+  text-transform: capitalize;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
+export const CardImg = styled.img`
+  width: 150px;
+  display: block;
+  margin: auto;
+`;
+
+export const CardDetails = styled.span`
+  font-size: 1.3rem;
+  color: #dbca80;
 `;

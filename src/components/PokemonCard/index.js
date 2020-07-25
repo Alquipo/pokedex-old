@@ -2,54 +2,70 @@ import React, { useState, useEffect } from "react";
 import { getPokemonImageUrl } from "../../services/api";
 import axios from "axios";
 
-import Spinner from "../Spinner";
+import { Pokeball } from "../Spinner";
 
-import { Sprite, Card, StyledLink } from "./styles";
+import {
+  Card,
+  StyledLink,
+  CardName,
+  CardImg,
+  CardDetails,
+  CardId,
+} from "./styles";
 
 const PokemonCard = ({ pokemon }) => {
   const [imagePokemon, setImagePokemon] = useState("");
   const [pokemonId, setPokemonId] = useState("");
+  const [pokemonType, setPokemonType] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadIdPokemon = async () => {
       await axios.get(pokemon.url).then((response) => {
         setPokemonId(response.data.id);
+        setPokemonType(response.data.types);
       });
     };
 
     loadIdPokemon();
 
     setImagePokemon(getPokemonImageUrl(pokemonId));
+
+    setIsLoading(false);
   }, [pokemon.url, pokemonId]);
 
-  if (pokemonId > 807) {
+  const nameCapitalized = pokemon.name
+    .toLowerCase()
+    .split("-")
+    .map((letter) => letter.charAt(0).toUpperCase() + letter.substring(1))
+    .join(" ");
+
+  const pokemonTypeMap = pokemonType
+    .map((poke) =>
+      poke.type.name
+        .toLowerCase()
+        .split(" ")
+        .map((letter) => letter.charAt(0).toUpperCase() + letter.substring(1))
+    )
+    .join(" / ");
+
+  console.log(pokemonTypeMap);
+
+  if (isLoading) {
+    return <Pokeball />;
+  } else if (pokemonId > 807) {
     return <div></div>;
   } else {
     return (
-      <div className="col-md-3 col-sm-6 mb-5">
-        <StyledLink to={`pokemon/${pokemonId}`}>
-          <Card className="card">
-            <Sprite
-              className="card-img-top rounded mx-auto mt-2"
-              src={imagePokemon}
-            ></Sprite>
+      <StyledLink to={`pokemon/${pokemonId}`}>
+        <Card className="card">
+          <CardId># {pokemonId}</CardId>
+          <CardImg src={imagePokemon} alt={nameCapitalized} />
+          <CardName>{nameCapitalized}</CardName>
 
-            <div className="card-body mx-auto">
-              <h6 className="card-title ">
-                <strong> #{pokemonId} </strong>
-                {pokemon.name
-                  .toLowerCase()
-                  .split(" ")
-                  .map(
-                    (letter) =>
-                      letter.charAt(0).toUpperCase() + letter.substring(1)
-                  )
-                  .join(" ")}
-              </h6>
-            </div>
-          </Card>
-        </StyledLink>
-      </div>
+          <CardDetails>{pokemonTypeMap}</CardDetails>
+        </Card>
+      </StyledLink>
     );
   }
 };
