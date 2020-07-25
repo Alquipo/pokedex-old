@@ -1,47 +1,61 @@
 import React, { useState, useEffect } from "react";
+import { getPokemonImageUrl } from "../../services/api";
+import axios from "axios";
+
+import Spinner from "../Spinner";
 
 import { Sprite, Card, StyledLink } from "./styles";
 
 const PokemonCard = ({ pokemon }) => {
   const [imagePokemon, setImagePokemon] = useState("");
-  const [pokemonIndex, setPokemonIndex] = useState("");
+  const [pokemonId, setPokemonId] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const pokeIndex = pokemon.url.split("/")[pokemon.url.split("/").length - 2];
+    const loadIdPokemon = async () => {
+      await axios.get(pokemon.url).then((response) => {
+        setPokemonId(response.data.id);
+      });
+    };
 
-    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeIndex}.png`;
+    loadIdPokemon();
 
-    setImagePokemon(imgUrl);
-    setPokemonIndex(pokeIndex);
-  }, [pokemon.url]);
+    setImagePokemon(getPokemonImageUrl(pokemonId));
+    setIsLoading(false);
+  }, [pokemon.url, pokemonId]);
 
-  return (
-    <div className="col-md-3 col-sm-6 mb-5">
-      <StyledLink to={`pokemon/${pokemonIndex}`}>
-        <Card className="card">
-          <h5 className="card-header">{pokemonIndex}</h5>
+  if (isLoading) {
+    return <Spinner />;
+  } else if (pokemonId > 807) {
+    return <div></div>;
+  } else {
+    return (
+      <div className="col-md-3 col-sm-6 mb-5">
+        <StyledLink to={`pokemon/${pokemonId}`}>
+          <Card className="card">
+            <Sprite
+              className="card-img-top rounded mx-auto mt-2"
+              src={imagePokemon}
+            ></Sprite>
 
-          <Sprite
-            className="card-img-top rounded mx-auto mt-2"
-            src={imagePokemon}
-          ></Sprite>
-
-          <div className="card-body mx-auto">
-            <h6 className="card-title ">
-              {pokemon.name
-                .toLowerCase()
-                .split(" ")
-                .map(
-                  (letter) =>
-                    letter.charAt(0).toUpperCase() + letter.substring(1)
-                )
-                .join(" ")}
-            </h6>
-          </div>
-        </Card>
-      </StyledLink>
-    </div>
-  );
+            <div className="card-body mx-auto">
+              <h6 className="card-title ">
+                <strong> #{pokemonId} </strong>
+                {pokemon.name
+                  .toLowerCase()
+                  .split(" ")
+                  .map(
+                    (letter) =>
+                      letter.charAt(0).toUpperCase() + letter.substring(1)
+                  )
+                  .join(" ")}
+              </h6>
+            </div>
+          </Card>
+        </StyledLink>
+      </div>
+    );
+  }
 };
 
 export default PokemonCard;
