@@ -1,5 +1,5 @@
 import React from "react";
-import spinner from "../../assets/pokeball.gif";
+import spinner from "../../assets/pokeball2.gif";
 
 export const Spinner = () => {
   return (

@@ -3,8 +3,9 @@ import { useRouteMatch } from "react-router-dom";
 import api from "../../services/api";
 
 import { Spinner } from "../Spinner";
+import { Badge } from "./styles";
 
-import "./styles.css";
+// import "./styles.css";
 
 const Pokemon = () => {
   const [pokemon, setPokemom] = useState([]);
@@ -129,9 +130,9 @@ const Pokemon = () => {
             <div className="col-7">
               <div className="float-right">
                 {pokemon.types.map((type) => (
-                  <span key={type} className={`badge badge-pill mr-1 ${type}`}>
+                  <Badge key={type} className={`badge badge-pill mr-1 ${type}`}>
                     {type}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </div>

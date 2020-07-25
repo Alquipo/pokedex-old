@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavBarStyles = styled.nav`
-  background-color: #34343c !important;
+  background-color: #444 !important;
 `;
 
 export const BackContainer = styled.nav`
