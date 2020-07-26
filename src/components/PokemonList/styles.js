@@ -1,7 +1,15 @@
-.pagination-container {
+import styled from "styled-components";
+
+export const PaginationContainer = styled.div`
   text-align: center;
   margin-bottom: 30px;
-}
+`;
+export const App = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 /* .search {
   height: 100px;
 }
@@ -23,11 +31,6 @@ input[type="text"] {
   align-items: center;
 } */
 
-#app {
-  display: flex;
-  /* margin: 0 auto; */
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
+// #app {
+
+// }

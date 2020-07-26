@@ -4,13 +4,14 @@ import { Spinner } from "../Spinner";
 import { Pagination } from "semantic-ui-react";
 import PokemonCard from "../PokemonCard";
 
-import "./styles.css";
+import { App, PaginationContainer } from "./styles";
+// import "./styles.css";
 
 const PokemonList = () => {
   const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [totalPokemon] = useState(807);
-  const [pokemonPerPage] = useState(20);
+  const [pokemonPerPage] = useState(50);
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
@@ -35,19 +36,19 @@ const PokemonList = () => {
     <Spinner />
   ) : (
     <>
-      <div className="pagination-container">
+      <PaginationContainer>
         <Pagination
           defaultActivePage={1}
           totalPages={totalPage}
           onPageChange={onPaginationClick}
         />
-      </div>
+      </PaginationContainer>
 
-      <div id="app">
+      <App>
         {pokemons.map((pokemon) => (
           <PokemonCard key={pokemon.name} pokemon={pokemon} />
         ))}
-      </div>
+      </App>
     </>
   );
 };

@@ -1,24 +1,55 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const CardName = styled.h1`
+  text-transform: capitalize;
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
+export const CardImg = styled.img`
+  width: 150px;
+  display: block;
+  margin: auto;
+`;
+
+export const CardDetails = styled.span`
+  font-size: 1.3rem;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+
+  margin: auto auto 0.5rem auto;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
+
 export const Card = styled.div`
   width: 12rem auto;
   background: #ecf0f1;
   color: #e4c439;
   padding: 1rem;
-  margin: 0.3rem 0.3rem;
   border-radius: 10px;
   border: 1px solid;
   text-align: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 
   transition: 0.6s ease-in-out all;
   -webkit-transition: 0.6s ease-out;
   -moz-transition: 0.6s ease-out;
   -o-transition: 0.6s ease-out;
+
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.05);
@@ -183,18 +214,6 @@ export const Card = styled.div`
   }
 `;
 
-export const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: black;
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
-`;
-
 export const CardId = styled.span`
   width: 3rem;
   color: #333;
@@ -276,21 +295,4 @@ export const CardId = styled.span`
   &.Fairy {
     background-color: #f781d8;
   }
-`;
-
-export const CardName = styled.h1`
-  text-transform: capitalize;
-  font-size: 2rem;
-  font-weight: 700;
-`;
-
-export const CardImg = styled.img`
-  width: 150px;
-  display: block;
-  margin: auto;
-`;
-
-export const CardDetails = styled.span`
-  font-size: 1.3rem;
-  /* color: #f1f1f1; */
 `;
