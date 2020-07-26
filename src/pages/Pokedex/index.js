@@ -9,7 +9,7 @@ function Pokedex() {
   return (
     <div className="pokedex-container">
       <NavBar />
-      <div className="container">
+      <div>
         <Dashboard />
       </div>
     </div>

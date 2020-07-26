@@ -15,10 +15,19 @@ input[type="text"] {
   width: 60%;
   margin: auto;
 } */
-#app {
+/* #app {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   grid-gap: 1.5rem;
   justify-content: center;
   align-items: center;
+} */
+
+#app {
+  display: flex;
+  /* margin: 0 auto; */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }

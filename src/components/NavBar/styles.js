@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NavBarStyles = styled.nav`
+export const NavBarStyles = styled.header`
   background-color: #fff !important;
 `;
 
