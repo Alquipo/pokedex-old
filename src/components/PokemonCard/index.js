@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getPokemonImageUrl } from "../../services/api";
 import axios from "axios";
 
-import { Pokeball, Pokeball2 } from "../Spinner";
-import pokeball from "../../assets/pokeball.svg";
+import { Pokeball } from "../Spinner";
 
 import {
   Card,
@@ -20,7 +19,6 @@ const PokemonCard = ({ pokemon }) => {
   const [pokemonTypes, setPokemonTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [imageLoading, setImageLoading] = useState(true);
-  const [toManyRequest, setToManyRequest] = useState(false);
 
   useEffect(() => {
     const loadIdPokemon = async () => {
