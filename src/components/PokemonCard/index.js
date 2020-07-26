@@ -31,7 +31,7 @@ const PokemonCard = ({ pokemon }) => {
 
     setImagePokemon(getPokemonImageUrl(pokemonId));
 
-    setIsLoading(false);
+    setIsLoading(true);
   }, [pokemon.url, pokemonId]);
 
   const nameCapitalized = pokemon.name
