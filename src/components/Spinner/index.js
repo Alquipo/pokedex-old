@@ -1,11 +1,10 @@
 import React from "react";
-import spinner from "../../assets/pokeball.gif";
-import pokeball from "../../assets/pokeball.svg";
+import pokeball from "../../assets/pokeball.gif";
 
-export const Spinner = () => {
+export const Pokeball = () => {
   return (
     <img
-      src={spinner}
+      src={pokeball}
       alt="Loading"
       style={{
         width: "800px",
@@ -16,21 +15,7 @@ export const Spinner = () => {
   );
 };
 
-export const Pokeball = () => {
-  return (
-    <img
-      src={spinner}
-      alt="Loading"
-      style={{
-        width: "12rem",
-        margin: "auto",
-        display: "block",
-      }}
-    />
-  );
-};
-
-export const Pokeball2 = () => {
+export const PokeballMini = () => {
   return (
     <img
       src={pokeball}

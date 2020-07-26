@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getPokemonImageUrl } from "../../services/api";
 import axios from "axios";
 
-import { Pokeball } from "../Spinner";
+import { PokeballMini } from "../Spinner";
 
 import {
   Card,
@@ -46,7 +46,7 @@ const PokemonCard = ({ pokemon }) => {
   );
 
   if (isLoading) {
-    return <Pokeball />;
+    return <PokeballMini />;
   } else if (pokemonId > 807) {
     return <div></div>;
   } else {
@@ -54,7 +54,8 @@ const PokemonCard = ({ pokemon }) => {
       <StyledLink to={`pokemon/${pokemonId}`}>
         <Card className={pokemonType[0]}>
           <CardId className={pokemonType[0]}># {pokemonId}</CardId>
-          {imageLoading ? <Pokeball /> : null}
+
+          {imageLoading ? <PokeballMini /> : null}
           <CardImg
             onLoad={() => {
               setImageLoading(false);

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
-import { Spinner } from "../Spinner";
+import { Pokeball } from "../Spinner";
 import { Pagination } from "semantic-ui-react";
 import PokemonCard from "../PokemonCard";
 
 import { App, PaginationContainer } from "./styles";
-// import "./styles.css";
 
 const PokemonList = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -34,7 +33,7 @@ const PokemonList = () => {
   const totalPage = Math.ceil(totalPokemon / pokemonPerPage);
 
   return isLoading ? (
-    <Spinner />
+    <Pokeball />
   ) : (
     <>
       <PaginationContainer>

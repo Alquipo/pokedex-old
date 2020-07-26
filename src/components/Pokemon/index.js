@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import api from "../../services/api";
 
-import { Spinner } from "../Spinner";
+import { Pokeball } from "../Spinner";
 import { Badge, ProgressDiv } from "./styles";
 
 // import "./styles.css";
@@ -120,7 +120,7 @@ const Pokemon = () => {
   ];
   console.log(pokemonSpecies.description);
   return isLoading ? (
-    <Spinner />
+    <Pokeball />
   ) : (
     <div className="col">
       <div className="card mt-5">

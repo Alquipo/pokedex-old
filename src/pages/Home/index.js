@@ -7,7 +7,7 @@ function Home() {
   return (
     <div>
       <h1>home</h1>
-      <Link to="Pokedex">
+      <Link to="pokedex">
         <button className="button">
           <span>
             <p>Let's go!</p>

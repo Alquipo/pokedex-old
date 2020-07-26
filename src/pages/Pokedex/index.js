@@ -3,14 +3,14 @@ import React from "react";
 import "./styles.css";
 
 import NavBar from "../../components/NavBar";
-import Dashboard from "../../components/Dashboard";
+import PokemonList from "../../components/PokemonList";
 
 function Pokedex() {
   return (
     <div className="pokedex-container">
       <NavBar />
       <div>
-        <Dashboard />
+        <PokemonList />
       </div>
     </div>
   );
