@@ -9,7 +9,7 @@ export const CardName = styled.h1`
 
 export const CardImg = styled.img`
   width: 150px;
-  display: block;
+  display: none;
   margin: auto;
 `;
 

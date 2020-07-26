@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getPokemonImageUrl } from "../../services/api";
 import axios from "axios";
 
-import { Pokeball } from "../Spinner";
+import { Pokeball, Pokeball2 } from "../Spinner";
+import pokeball from "../../assets/pokeball.svg";
 
 import {
   Card,
@@ -18,6 +19,8 @@ const PokemonCard = ({ pokemon }) => {
   const [pokemonId, setPokemonId] = useState("");
   const [pokemonTypes, setPokemonTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [imageLoading, setImageLoading] = useState(true);
+  const [toManyRequest, setToManyRequest] = useState(false);
 
   useEffect(() => {
     const loadIdPokemon = async () => {
@@ -44,8 +47,6 @@ const PokemonCard = ({ pokemon }) => {
     (type) => type.type.name[0].toUpperCase() + type.type.name.slice(1)
   );
 
-  console.log(pokemonType);
-
   if (isLoading) {
     return <Pokeball />;
   } else if (pokemonId > 807) {
@@ -55,7 +56,16 @@ const PokemonCard = ({ pokemon }) => {
       <StyledLink to={`pokemon/${pokemonId}`}>
         <Card className={pokemonType[0]}>
           <CardId className={pokemonType[0]}># {pokemonId}</CardId>
-          <CardImg src={imagePokemon} alt={nameCapitalized} />
+          {imageLoading ? <Pokeball /> : null}
+          <CardImg
+            onLoad={() => {
+              setImageLoading(false);
+            }}
+            src={imagePokemon}
+            alt={nameCapitalized}
+            style={imageLoading ? null : { display: "block" }}
+          />
+
           <CardName>{nameCapitalized}</CardName>
           <CardDetails>{pokemonType.join(" / ")}</CardDetails>
         </Card>

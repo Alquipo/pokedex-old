@@ -21,9 +21,10 @@ const PokemonList = () => {
         .then((response) => {
           setPokemons(response.data.results);
         });
-      setIsLoading(false);
     };
     fetchPokemons();
+
+    setIsLoading(false);
   }, [currentPage, pokemonPerPage]);
 
   const onPaginationClick = (e, pageInfo) => {
