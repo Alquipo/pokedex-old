@@ -10,7 +10,7 @@ function Home() {
       <Link to="pokedex">
         <button className="button">
           <span>
-            <p>Let's go!</p>
+            <p>POKEDEX</p>
           </span>
         </button>
       </Link>
