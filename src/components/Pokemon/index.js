@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
-import api from "../../services/api";
+import api, { getPokemonImageUrl2 } from "../../services/api";
 
 import { Pokeball } from "../Spinner";
 import { Badge, ProgressDiv } from "./styles";
 
-// import "./styles.css";
+import "./styles.css";
 
 const Pokemon = () => {
   const [pokemon, setPokemom] = useState([]);
   const [pokemonSpecies, setPokemonSpecies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [imagePokemon, setImagePokemon] = useState("");
 
   const { params } = useRouteMatch();
 
@@ -41,7 +42,7 @@ const Pokemon = () => {
                 .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
                 .join(" ")
             )
-            .join(", "),
+            .join(" / "),
           id: id,
           weight: weight / 10,
           height: height / 10,
@@ -104,11 +105,14 @@ const Pokemon = () => {
             hatchSteps: 255 * (hatch_counter + 1),
           });
         });
+
+      await setImagePokemon(getPokemonImageUrl2(pokemon.id));
+
       setIsLoading(false);
     };
 
     loadPokemonData();
-  }, [params.pokemonIndex]);
+  }, [params.pokemonIndex, pokemon.id]);
 
   const baseStatsName = [
     "HP",
@@ -122,8 +126,129 @@ const Pokemon = () => {
   return isLoading ? (
     <Pokeball />
   ) : (
-    <div className="col">
-      <div className="card mt-5">
+    <div className="col-12 fadeIn">
+      <h1
+        className="text-center text-uppercase Section-Heading"
+        style={{ paddingBottom: "3rem" }}
+      >
+        {pokemon.name}
+      </h1>
+
+      <div
+        className="row justify-content-center"
+        style={{ position: "relative", paddingBottom: "3rem" }}
+      >
+        <div className="col-lg-3 col-md-2 bioDiv d-flex flex-wrap justify-content-center">
+          <div className="inner">
+            <table className="table table-borderless">
+              <tbody>
+                <tr>
+                  <td className="text-right font-weight-bold">ID</td>
+                  <td># {pokemon.id}</td>
+                </tr>
+                <tr>
+                  <td className="text-right font-weight-bold">Height</td>
+                  <td style={{ whiteSpace: "nowrap" }}>{pokemon.height} Mt</td>
+                </tr>
+                <tr>
+                  <td className="text-right font-weight-bold">Weight</td>
+                  <td style={{ whiteSpace: "nowrap" }}>{pokemon.weight} Kg</td>
+                </tr>
+                <tr>
+                  <td className="text-right font-weight-bold">Abilities</td>
+                  <td>
+                    <span className="abilities">
+                      <Badge
+                        className={`ability ${pokemon.types[0]} text-uppercase`}
+                        role="button"
+                        style={{
+                          whiteSpace: "nowrap",
+                          display: "inline-block",
+                          boxShadow: "none",
+                        }}
+                      >
+                        {pokemon.abilities}
+                      </Badge>
+                      {console.log(pokemon.abilities)}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    className="text-right font-weight-bold"
+                    style={{ verticalAlign: "middle" }}
+                  >
+                    Type
+                  </td>
+                  <td>
+                    <div className="row" style={{ flexWrap: "nowrap" }}>
+                      {pokemon.types.map((type) => (
+                        <Badge className={`icon ${type} text-capitalize`}>
+                          <span className="text-white font-weight-bold">
+                            {type}
+                          </span>
+                        </Badge>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="col-lg-5 d-flex flex-wrap align-items-center">
+          <div className="image-container">
+            <img
+              alt=""
+              className="Image img-fluid mx-auto my-auto d-block fadeInOut"
+              src={imagePokemon}
+              style={{
+                zIndex: "100 !important",
+                maxWidth: "85%",
+                height: "auto",
+                paddingTop: "10px",
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="col-lg-3 col-md-2 statDiv my-auto mx-auto d-flex flex-wrap justify-content-center">
+          <div className="inner">
+            <table className="table table-borderless">
+              {pokemon.baseStats.map((stat, index) => (
+                <tr key={index}>
+                  <td
+                    className="text-right font-weight-bold"
+                    style={{ whiteSpace: "nowrap" }}
+                  >
+                    {baseStatsName[index]}
+                  </td>
+                  <td>
+                    <div className="progress">
+                      <div
+                        className="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
+                        role="progressbar"
+                        aria-valuenow=""
+                        aria-valuemin="0"
+                        aria-valuemax="255"
+                        style={{ width: `${stat}%` }}
+                      >
+                        <span>{stat}</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* <div className="card mt-5">
         <div className="card-header">
           <div className="row">
             <div className="col-7">
@@ -288,8 +413,6 @@ const Pokemon = () => {
           </a>
         </div>
       </div>
-    </div>
-  );
-};
+    </div> */
 
 export default Pokemon;

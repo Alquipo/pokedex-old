@@ -1,105 +1,117 @@
 import styled from "styled-components";
 
-export const Badge = styled.span`
+export const Badge = styled.div`
   &.Normal {
     background-color: #a8a878;
-    border: 1px solid #6d6d4e;
+    box-shadow: 0 0 20px #a8a878;
     color: #fff;
   }
 
   &.Fire {
     background-color: #f08030;
-    border: 1px solid #9c531f;
+    box-shadow: 0 0 20px #f08030;
     color: #fff;
   }
 
   &.Water {
     background-color: #6890f0;
-    border: 1px solid #445e9c;
+    box-shadow: 0 0 20px #6890f0;
     color: #fff;
   }
 
   &.Electric {
     background-color: #f8d030;
-    border: 1px solid #a1871f;
+    box-shadow: 0 0 20px #f8d030;
     color: #fff;
   }
 
   &.Grass {
     background-color: #78c850;
-    border: 1px solid #4e8234;
+    box-shadow: 0 0 20px #78c850;
     color: #fff;
   }
 
   &.Ice {
     background-color: #98d8d8;
-    border: 1px solid #638d8d;
+    box-shadow: 0 0 20px #98d8d8;
+
     color: #fff;
   }
 
   &.Ground {
     background-color: #e0c068;
-    border: 1px solid #927d44;
+    box-shadow: 0 0 20px #e0c068;
+
     color: #fff;
   }
 
   &.Flying {
     background-color: #a890f0;
-    border: 1px solid #6d5e9c;
+    box-shadow: 0 0 20px #a890f0;
+
     color: #fff;
   }
 
   &.Ghost {
     background-color: #705898;
-    border: 1px solid #493963;
+    box-shadow: 0 0 20px #705898;
+
     color: #fff;
   }
 
   &.Rock {
     background-color: #b8a038;
-    border: 1px solid #786824;
+    box-shadow: 0 0 20px #b8a038;
+
     color: #fff;
   }
 
   &.Fighting {
     background-color: #c03028;
-    border: 1px solid #7d1f1a;
+    box-shadow: 0 0 20px #c03028;
+
     color: #fff;
   }
 
   &.Poison {
     background-color: #a040a0;
-    border: 1px solid #682a68;
+    box-shadow: 0 0 20px #a040a0;
+
     color: #fff;
   }
 
   &.Psychic {
     background-color: #f85888;
-    border: 1px solid #a13959;
+    box-shadow: 0 0 20px #f85888;
+
     color: #fff;
   }
 
   &.Bug {
     background-color: #a8b820;
-    border: 1px solid #6d7815;
+    box-shadow: 0 0 20px #a8b820;
+
     color: #fff;
   }
 
   &.Dark {
     background-color: #705848;
-    border: 1px solid #49392f;
+    box-shadow: 0 0 20px #705848;
+
     color: #fff;
   }
 
   &.Steel {
     background-color: #b8b8d0;
-    border: 1px solid #787887;
+    box-shadow: 0 0 20px #b8b8d0;
+
     color: #fff;
   }
 
   &.Dragon {
     background-color: #7038f8;
-    border: 1px solid #4924a1;
+    box-shadow: 0 0 20px #7038f8;
+
     color: #fff;
   }
 `;
@@ -112,6 +124,7 @@ export const ProgressDiv = styled.div`
     font-size: 1rem;
     text-align: right;
     transition: width 1s ease-in;
+    animation-play-state: running;
   }
 
   &.progress-bar span {
