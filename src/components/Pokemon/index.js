@@ -28,7 +28,7 @@ const Pokemon = () => {
           abilities,
         } = response.data;
         setPokemom({
-          name: name.charAt(0).toUpperCase() + name.slice(1),
+          name: name.replace(/-/g, " "),
           types: types.map(
             (typeInfo) =>
               typeInfo.type.name[0].toUpperCase() + typeInfo.type.name.slice(1)
@@ -118,7 +118,7 @@ const Pokemon = () => {
     "Sp. Defense",
     "Speed",
   ];
-  console.log(pokemonSpecies.description);
+
   return isLoading ? (
     <Pokeball />
   ) : (
@@ -147,7 +147,9 @@ const Pokemon = () => {
               />
             </div>
             <div className="col-md-9">
-              <h4 className="mx-auto">{pokemon.name}</h4>
+              <h4 className="mx-auto" style={{ textTransform: "capitalize" }}>
+                {pokemon.name}
+              </h4>
               {pokemon.baseStats.map((stat, index) => (
                 <div key={index} className="row align-items-center">
                   <div className="col-12 col-md-3">

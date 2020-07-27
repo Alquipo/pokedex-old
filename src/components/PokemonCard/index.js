@@ -35,11 +35,7 @@ const PokemonCard = ({ pokemon }) => {
     setIsLoading(false);
   }, [pokemon.url, pokemonId]);
 
-  const nameCapitalized = pokemon.name
-    .toLowerCase()
-    .split("-")
-    .map((letter) => letter.charAt(0).toUpperCase() + letter.substring(1))
-    .join(" ");
+  const nameCapitalized = pokemon.name.split("-")[0];
 
   const pokemonType = pokemonTypes.map(
     (type) => type.type.name[0].toUpperCase() + type.type.name.slice(1)
