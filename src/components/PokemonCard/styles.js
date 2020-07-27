@@ -5,7 +5,7 @@ export const CardName = styled.h1`
   text-transform: capitalize;
   font-size: 2rem;
   font-weight: 700;
-  width: 200px;
+  width: 170px;
 `;
 
 export const CardImg = styled.img`

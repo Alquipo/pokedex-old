@@ -11,6 +11,7 @@ export const Pokeball = () => {
         margin: "auto",
         display: "block",
       }}
+      loading="lazy"
     />
   );
 };
@@ -25,6 +26,7 @@ export const PokeballMini = () => {
         margin: "auto",
         display: "block",
       }}
+      loading="lazy"
     />
   );
 };

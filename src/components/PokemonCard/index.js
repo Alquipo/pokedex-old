@@ -53,6 +53,7 @@ const PokemonCard = ({ pokemon }) => {
 
           {imageLoading ? <PokeballMini /> : null}
           <CardImg
+            loading="lazy"
             onLoad={() => {
               setImageLoading(false);
             }}
@@ -60,7 +61,6 @@ const PokemonCard = ({ pokemon }) => {
             alt={nameCapitalized}
             style={imageLoading ? null : { display: "block" }}
           />
-
           <CardName>{nameCapitalized}</CardName>
           <CardDetails>{pokemonType.join(" / ")}</CardDetails>
         </Card>

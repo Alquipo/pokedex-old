@@ -3,8 +3,8 @@ import api from "../../services/api";
 import { Pokeball } from "../Spinner";
 import { Pagination } from "semantic-ui-react";
 import PokemonCard from "../PokemonCard";
-
 import Search from "../Search";
+// import axios from "axios";
 
 import { App, PaginationContainer } from "./styles";
 
@@ -12,7 +12,7 @@ const PokemonList = () => {
   const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [totalPokemon] = useState(807);
-  const [pokemonPerPage] = useState(30);
+  const [pokemonPerPage] = useState(54);
   const [currentPage, setCurrentPage] = useState(0);
   const [query, setQuery] = useState("");
 
@@ -24,11 +24,15 @@ const PokemonList = () => {
           setPokemons(response.data.results);
         });
 
+      // await axios.get(`./pokemon.json`).then((response) => {
+      //   setPokemons(response.data.results);
+      // });
+
       setIsLoading(false);
     };
     fetchPokemons();
   }, [currentPage, pokemonPerPage]);
-
+  console.log(pokemons);
   const onPaginationClick = (e, pageInfo) => {
     setCurrentPage(pageInfo.activePage * pokemonPerPage - pokemonPerPage);
   };

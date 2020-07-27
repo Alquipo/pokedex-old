@@ -8,6 +8,10 @@ import Pokedex from "./pages/Pokedex";
 import Home from "./pages/Home";
 import Pokemon from "./pages/Pokemon";
 
+// const Pokedex = React.lazy(() => import("./pages/Pokedex"));
+// const Home = React.lazy(() => import("./pages/Home"));
+// const Pokemon = React.lazy(() => import("./pages/Pokemon"));
+
 function App() {
   return (
     <BrowserRouter>
