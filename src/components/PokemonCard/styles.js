@@ -44,10 +44,10 @@ export const Card = styled.div`
   position: relative;
   overflow: hidden;
 
-  transition: 0.6s ease-in-out all;
-  -webkit-transition: 0.6s ease-out;
-  -moz-transition: 0.6s ease-out;
-  -o-transition: 0.6s ease-out;
+  transition: 0.4s ease-in-out all;
+  -webkit-transition: 0.4s ease-out;
+  -moz-transition: 0.4s ease-out;
+  -o-transition: 0.4s ease-out;
 
   cursor: pointer;
 
@@ -79,8 +79,8 @@ export const Card = styled.div`
     transform: scale(2);
     -webkit-transition-property: transform;
     transition-property: transform;
-    -webkit-transition: 0.6s ease-out;
-    transition: 0.6s ease-out;
+    -webkit-transition: 0.4s ease-out;
+    transition: 0.4s ease-out;
   }
   &:hover:before {
     -webkit-transform: scale(0);

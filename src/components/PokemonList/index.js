@@ -4,14 +4,17 @@ import { Pokeball } from "../Spinner";
 import { Pagination } from "semantic-ui-react";
 import PokemonCard from "../PokemonCard";
 
+import Search from "../Search";
+
 import { App, PaginationContainer } from "./styles";
 
 const PokemonList = () => {
   const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [totalPokemon] = useState(807);
-  const [pokemonPerPage] = useState(30);
+  const [pokemonPerPage] = useState(50);
   const [currentPage, setCurrentPage] = useState(0);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -20,10 +23,10 @@ const PokemonList = () => {
         .then((response) => {
           setPokemons(response.data.results);
         });
+
+      setIsLoading(false);
     };
     fetchPokemons();
-
-    setIsLoading(false);
   }, [currentPage, pokemonPerPage]);
 
   const onPaginationClick = (e, pageInfo) => {
@@ -32,10 +35,26 @@ const PokemonList = () => {
 
   const totalPage = Math.ceil(totalPokemon / pokemonPerPage);
 
+  const renderPokemonsList = () => {
+    const pokemonsList = [];
+
+    pokemons.forEach((pokemon) => {
+      if (!pokemon.name.includes(query)) {
+        return;
+      }
+
+      pokemonsList.push(<PokemonCard key={pokemon.name} pokemon={pokemon} />);
+    });
+
+    return pokemonsList;
+  };
+
   return isLoading ? (
     <Pokeball />
   ) : (
     <>
+      <Search getQuery={(q) => setQuery(q)} />
+
       <PaginationContainer>
         <Pagination
           defaultActivePage={1}
@@ -45,9 +64,11 @@ const PokemonList = () => {
       </PaginationContainer>
 
       <App>
-        {pokemons.map((pokemon) => (
+        {/* {pokemons.map((pokemon) => (
           <PokemonCard key={pokemon.name} pokemon={pokemon} />
-        ))}
+        ))} */}
+
+        {renderPokemonsList()}
       </App>
     </>
   );
