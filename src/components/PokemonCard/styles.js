@@ -5,10 +5,11 @@ export const CardName = styled.h1`
   text-transform: capitalize;
   font-size: 2rem;
   font-weight: 700;
+  width: 158px;
 `;
 
 export const CardImg = styled.img`
-  width: 150px;
+  width: 100px;
   display: none;
   margin: auto;
 `;
@@ -21,7 +22,7 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
 
-  margin: auto auto 0.5rem auto;
+  margin: 0.3rem;
 
   &:focus,
   &:hover,
@@ -44,10 +45,10 @@ export const Card = styled.div`
   position: relative;
   overflow: hidden;
 
-  transition: 0.4s ease-in-out all;
-  -webkit-transition: 0.4s ease-out;
-  -moz-transition: 0.4s ease-out;
-  -o-transition: 0.4s ease-out;
+  transition: 0.5s ease-in-out all;
+  -webkit-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
 
   cursor: pointer;
 
@@ -79,8 +80,8 @@ export const Card = styled.div`
     transform: scale(2);
     -webkit-transition-property: transform;
     transition-property: transform;
-    -webkit-transition: 0.4s ease-out;
-    transition: 0.4s ease-out;
+    -webkit-transition: 0.5s ease-out;
+    transition: 0.5s ease-out;
   }
   &:hover:before {
     -webkit-transform: scale(0);

@@ -9,5 +9,5 @@ export const App = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  /* will-change: transform */
+  will-change: transform;
 `;

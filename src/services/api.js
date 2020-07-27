@@ -16,7 +16,9 @@ const pad = (number, length) => {
 //     3
 //   )}.png`;
 
-export const getPokemonImageUrl = (id) => `./images/${pad(id, 3)}.png`;
+// export const getPokemonImageUrl = (id) => `./images/${pad(id, 3)}.png`;
+export const getPokemonImageUrl = (id) =>
+  `/thumbnails-compressed/${pad(id, 3)}.png`;
 
 const api = axios.create({
   baseURL: "https://pokeapi.co/api/v2/",

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getPokemonImageUrl } from "../../services/api";
 import axios from "axios";
 
@@ -20,17 +20,17 @@ const PokemonCard = ({ pokemon }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [imageLoading, setImageLoading] = useState(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const loadIdPokemon = async () => {
       await axios.get(pokemon.url).then((response) => {
         setPokemonId(response.data.id);
         setPokemonTypes(response.data.types);
       });
+
+      await setImagePokemon(getPokemonImageUrl(pokemonId));
     };
 
     loadIdPokemon();
-
-    setImagePokemon(getPokemonImageUrl(pokemonId));
 
     setIsLoading(false);
   }, [pokemon.url, pokemonId]);
