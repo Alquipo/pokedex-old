@@ -7,9 +7,9 @@ import PokemonComponent from "../../components/Pokemon";
 
 function Pokemon() {
   return (
-    <div className="pokedex-container">
+    <div className="header-container">
       <NavBar />
-      <div id="container">
+      <div id="container-fluid">
         <PokemonComponent />
       </div>
     </div>

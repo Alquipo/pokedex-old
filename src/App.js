@@ -15,7 +15,7 @@ import Pokemon from "./pages/Pokemon";
 function App() {
   return (
     <BrowserRouter>
-      <div style={{ backgroundColor: "#f1f1f1" }}>
+      <div style={{ backgroundColor: "#fff" }}>
         <Route path="/" exact component={Home} />
         <Route path="/pokedex" exact component={Pokedex} />
         <Route path="/pokemon/:pokemonIndex" exact component={Pokemon} />

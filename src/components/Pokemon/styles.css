@@ -1,3 +1,7 @@
+h1 {
+  font-size: 3rem;
+}
+
 .fadeIn {
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1s; /* Firefox < 16 */
@@ -13,6 +17,10 @@
 }
 .bioDiv {
   color: #505050;
+  padding-right: 0;
+  margin-right: 0;
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
 }
 
 .statDiv {
@@ -22,11 +30,13 @@
   margin-right: 0 !important;
 }
 
-.statDiv .table > tr > td:first-child {
+.statDiv,
+.table tr td:first-child {
   color: #505050;
 }
 
-.statDiv .table > tr:first-child > td > button {
+.statDiv,
+.table tr:first-child td button {
   color: #505050;
 }
 
@@ -80,11 +90,11 @@
   /* //height: 20px; */
   font-size: 1rem;
   text-align: right;
-  /* //transition: width 1s ease-in; */
+  transition: width 1s ease-in;
 }
 
 .progress {
-  width: 150px;
+  /* width: 150px; */
 }
 
 .progress-bar span {
@@ -92,11 +102,11 @@
 }
 
 @media only screen and (min-width: 992px) {
-  /* // BioDIv */
   .bioDiv {
     perspective: 400px;
     margin: auto 0;
     width: 37em;
+    font-size: large;
   }
 
   .bioDiv:hover .inner {
@@ -115,7 +125,8 @@
   .statDiv .inner {
     transition: 0.3s;
     transform: rotateY(-30deg);
-    width: 100px;
+    width: 100%;
+    padding-right: 3em;
   }
 
   .statDiv {
@@ -123,13 +134,9 @@
     margin: 4em auto;
     width: 37em;
     padding-left: 0;
-    /* padding-right: 1rem; // Changed 0 earlier */
+    font-size: large;
+    padding-right: 1em;
     -webkit-font-smoothing: antialiased !important;
-    /* //-webkit-filter: blur(0);
-    //-webkit-backface-visibility: hidden;
-    //-webkit-transform: translateZ(0) scale(1.0, 1.0);
-    //transform: translateZ(0);
-    //margin-right: 30px; */
   }
 }
 
@@ -139,9 +146,9 @@
   }
   .bioDiv .inner {
     padding: 0 !important;
+    width: 100%;
   }
-  .ability,
-  .variety {
+  .ability .variety {
     white-space: pre !important;
   }
   table td {
@@ -149,5 +156,38 @@
   }
   .formsBlock {
     padding-top: 4px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .Section-Heading {
+    font-size: x-large;
+  }
+  table td {
+    padding: 0.5rem;
+  }
+  .abilities,
+  .varieties {
+    font-size: small !important;
+  }
+  .varieties {
+    display: inline-block;
+  }
+
+  .bioDiv .inner {
+    width: min-content;
+  }
+  .statDiv .inner {
+    padding-top: 1rem;
+  }
+  .statDiv {
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .statDiv .inner {
+    font-size: x-small !important;
+    padding-top: 1rem;
   }
 }

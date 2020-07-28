@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavBarStyles = styled.header`
-  background-color: #fff !important;
+  background-color: #f1f1f1 !important;
 `;
 
 export const BackContainer = styled.nav`
@@ -31,7 +31,6 @@ export const TitleContainer = styled.nav`
 
   h1 {
     color: gray;
-    /* cursor: pointer; */
 
     &:hover {
       color: black;

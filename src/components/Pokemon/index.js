@@ -127,16 +127,13 @@ const Pokemon = () => {
     <Pokeball />
   ) : (
     <div className="col-12 fadeIn">
-      <h1
-        className="text-center text-uppercase Section-Heading"
-        style={{ paddingBottom: "3rem" }}
-      >
+      <h1 className="text-center text-uppercase Section-Heading">
         {pokemon.name}
       </h1>
 
       <div
         className="row justify-content-center"
-        style={{ position: "relative", paddingBottom: "3rem" }}
+        style={{ position: "relative", paddingBottom: "1rem" }}
       >
         <div className="col-lg-3 col-md-2 bioDiv d-flex flex-wrap justify-content-center">
           <div className="inner">
@@ -224,18 +221,20 @@ const Pokemon = () => {
                   >
                     {baseStatsName[index]}
                   </td>
-                  <td>
+                  <td colSpan={3} style={{ width: "100%" }}>
                     <div className="progress">
-                      <div
-                        className="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
+                      <Badge
+                        className={`progress-bar progress-bar-striped progress-bar-animated rounded-sm ${pokemon.types[0]}`}
                         role="progressbar"
                         aria-valuenow=""
                         aria-valuemin="0"
                         aria-valuemax="255"
-                        style={{ width: `${stat}%` }}
+                        style={{
+                          width: `${stat}%`,
+                        }}
                       >
                         <span>{stat}</span>
-                      </div>
+                      </Badge>
                     </div>
                   </td>
                 </tr>
