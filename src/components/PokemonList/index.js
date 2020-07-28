@@ -24,15 +24,11 @@ const PokemonList = () => {
           setPokemons(response.data.results);
         });
 
-      // await axios.get(`./pokemon.json`).then((response) => {
-      //   setPokemons(response.data.results);
-      // });
-
       setIsLoading(false);
     };
     fetchPokemons();
   }, [currentPage, pokemonPerPage]);
-  console.log(pokemons);
+
   const onPaginationClick = (e, pageInfo) => {
     setCurrentPage(pageInfo.activePage * pokemonPerPage - pokemonPerPage);
   };

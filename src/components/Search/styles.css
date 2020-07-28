@@ -10,4 +10,5 @@ input[type="text"] {
   border-radius: 5px;
   width: 60%;
   margin: auto;
+  background-color: #f1f1f1;
 }

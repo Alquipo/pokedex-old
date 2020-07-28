@@ -5,7 +5,7 @@ export const NavBarStyles = styled.header`
 `;
 
 export const BackContainer = styled.nav`
-  margin-left: 6rem;
+  margin-left: 100px;
 
   a {
     text-decoration: none;
@@ -28,7 +28,6 @@ export const BackContainer = styled.nav`
 export const TitleContainer = styled.nav`
   width: 60%;
   text-align: center;
-  margin-left: 10em;
 
   h1 {
     color: gray;
