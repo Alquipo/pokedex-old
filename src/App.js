@@ -5,7 +5,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Pokedex from "./pages/Pokedex";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import Pokemon from "./pages/Pokemon";
 
 // const Pokedex = React.lazy(() => import("./pages/Pokedex"));
@@ -16,7 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <div style={{ backgroundColor: "#fff" }}>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={Pokedex} />
         <Route path="/pokedex" exact component={Pokedex} />
         <Route path="/pokemon/:pokemonIndex" exact component={Pokemon} />
       </div>

@@ -50,10 +50,8 @@ const PokemonCard = ({ pokemon }) => {
       <StyledLink to={`pokemon/${pokemonId}`}>
         <Card className={pokemonType[0]}>
           <CardId className={pokemonType[0]}># {pokemonId}</CardId>
-
           {imageLoading ? <PokeballMini /> : null}
           <CardImg
-            loading="lazy"
             onLoad={() => {
               setImageLoading(false);
             }}
